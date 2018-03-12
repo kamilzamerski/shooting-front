@@ -1,0 +1,16 @@
+<div class="form-group" [ngClass]="{
+        'has-error': (model.invalid && (model.dirty || model.touched || form.submitted)) || errors[name],
+        'has-success': model.valid && (model.dirty || model.touched || form.submitted) && !errors[name]
+      }">
+  <label [for]="id">{{label}}</label>
+  <input [type]="type" class="form-control" [id]="id"
+         [required]="required"
+         [name]="name"
+         [value]="value"
+         (change)="onChange($event)"
+         (keyup)="onChange($event)" #input [(ngModel)]="value">
+  <div *ngIf="(model.errors && (model.dirty || model.touched || form.submitted)) || errors[name]">
+    <span class="help-block" *ngIf="model.errors.required">To pole jest wymagane</span>
+    <span class="help-block" *ngIf="errors[name]">{{errors[name]}}</span>
+  </div>
+</div>

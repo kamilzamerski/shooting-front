@@ -1,0 +1,75 @@
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Zgłoszenie klubowicza</h3>
+                </div>
+                <form #memberForm="ngForm" (ngSubmit)="onSubmit()" #f="ngForm">
+                    <div class="box-body">
+                        <div class="col-md-6">
+                            <h4>Dane osobowe</h4>
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <app-form-input [name]="'name'" [id]="'name'" [label]="'Imię'" [required]="true" [form]="f" [errors]="errors" [(ngModel)]="member.name"></app-form-input>
+                                </div>
+                                <div class="col-xs-6">
+                                    <app-form-input [name]="'surname'" [id]="'surname'" [label]="'Nazwisko'" [required]="true" [form]="f" [errors]="errors" [(ngModel)]="member.surname"></app-form-input>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <app-form-input [name]="'pesel'" [id]="'pesel'" [label]="'PESEL'" [required]="true" [form]="f" [errors]="errors" [(ngModel)]="member.pesel"></app-form-input>
+                                </div>
+                                <div class="col-xs-6">
+                                    <app-form-input [name]="'shooting_license'" [id]="'shooting_license'" [label]="'Numer Patentu PZSS'" [form]="f" [errors]="errors" [(ngModel)]="member.shooting_license"></app-form-input>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <app-form-input-group [name]="'date_of_join'" [id]="'date_of_join'" [label]="'Data przyjęcia'" [required]="true" [icon]="'fa fa-calendar'" [datepicker]="true" [form]="f" [errors]="errors" [(ngModel)]="member.date_of_join"></app-form-input-group>
+                                </div>
+                                <div class="col-xs-6">
+                                    <app-form-input-group [name]="'active_to'" [id]="'active_to'" [label]="'Aktywny do'" [icon]="'fa fa-calendar'" [datepicker]="true" [form]="f" [errors]="errors" [(ngModel)]="member.active_to"></app-form-input-group>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <app-form-input-group [name]="'email'" [id]="'email'" [label]="'E-mail'" [icon]="'fa fa-at'" [form]="f" [errors]="errors" [(ngModel)]="member.email"></app-form-input-group>
+                                </div>
+                                <div class="col-xs-6">
+                                    <app-form-input-group [name]="'phone'" [id]="'phone'" [label]="'Telefon'" [icon]="'fa fa-phone'" [form]="f" [errors]="errors" [(ngModel)]="member.phone"></app-form-input-group>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h4>Adres zamieszkania</h4>
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <app-form-input [name]="'address_street'" [id]="'address_street'" [label]="'Ulica'" [required]="true" [form]="f" [errors]="errors" [(ngModel)]="member.address_street"></app-form-input>
+                                </div>
+                                <div class="col-xs-3">
+                                    <app-form-input [name]="'address_street_no'" [id]="'address_street_no'" [label]="'Nr domu'" [required]="true" [form]="f" [errors]="errors" [(ngModel)]="member.address_street_no"></app-form-input>
+                                </div>
+                                <div class="col-xs-3">
+                                    <app-form-input [name]="'address_apartment_no'" [id]="'address_apartment_no'" [label]="'Nr mieszkania'" [form]="f" [errors]="errors" [(ngModel)]="member.address_apartment_no"></app-form-input>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <app-form-input [name]="'post_code'" [id]="'post_code'" [label]="'Kod pocztowy'" [required]="true" [form]="f" [errors]="errors" [(ngModel)]="member.post_code"></app-form-input>
+                                </div>
+                                <div class="col-xs-6">
+                                    <app-form-input [name]="'city'" [id]="'city'" [label]="'Miejscowość'" [required]="true" [form]="f" [errors]="errors" [(ngModel)]="member.city"></app-form-input>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Zapisz</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
