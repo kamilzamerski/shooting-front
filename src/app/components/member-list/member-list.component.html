@@ -11,7 +11,7 @@
                             <div class="col-sm-6">
                                 <div class="dataTables_length">
                                     <label>Pokaż
-                                        <select class="form-control input-sm">
+                                        <select class="form-control input-sm" (change)="onChange()" [(ngModel)]="size">
                                             <option value="10">10</option>
                                             <option value="25">25</option>
                                             <option value="50">50</option>
@@ -37,13 +37,14 @@
                                             <th>Nazwisko</th>
                                             <th>Miejscowość</th>
                                             <th>Patent</th>
+                                            <th>Licencje</th>
                                             <th class="text-center">
                                                 <i class="fa fa-cog"></i>
                                             </th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr role="row" ngClass="{odd: odd, even: even}" *ngFor="let member of membersList">
+                                    <tbody *ngIf="membersList">
+                                        <tr role="row" ngClass="{odd: odd, even: even}" *ngFor="let member of membersList.data">
                                             <td>{{member.id}}</td>
                                             <td>{{member.date_of_join}}</td>
                                             <td>{{member.name}}</td>
@@ -51,7 +52,11 @@
                                             <td>{{member.city}}</td>
                                             <td>{{member.shooting_license}}</td>
                                             <td class="text-center">
+                                                <a routerLink="/shooter/licenses/{{member.shooter_id}}" tooltip="Licencje zawodnicze"><i class="fa fa-history"></i></a>
+                                            </td>
+                                            <td class="text-center">
                                                 <a routerLink="/members/edit/{{member.id}}" tooltip="Edytuj"><i class="fa fa-pencil"></i></a>
+                                                <a routerLink="/members/accounting/{{member.id}}" tooltip="Rozliczenia"><i class="fa fa-money"></i></a>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -59,7 +64,7 @@
                             </div>
                         </div>
                         <div class="row">
-                                <app-pagination [count]="countAll" [list]="membersList"></app-pagination>
+                                <app-pagination [data]="membersList" route="/members/page" (goToPage)="setPage($event)" *ngIf="membersList"></app-pagination>
                         </div>
                     </div>
                 </div>

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {RestService} from '../../rest.service';
-import {FlashMessagesService} from 'angular2-flash-messages';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
     selector: 'app-member-list',
@@ -8,22 +8,37 @@ import {FlashMessagesService} from 'angular2-flash-messages';
     styleUrls: ['./member-list.component.scss']
 })
 export class MemberListComponent implements OnInit {
-
+    size: number;
+    page: number;
     membersList: any;
-    countAll: number;
 
-    constructor(private restHttp: RestService) {
+    constructor(protected router: Router, private route: ActivatedRoute, private restHttp: RestService) {
+        this.size = 10;
+        this.page = 1;
     }
 
     ngOnInit() {
+        let page = this.route.snapshot.paramMap.get('page');
+        if (page) {
+            this.page = parseInt(page);
+        }
         this.getMembersList();
     }
 
     getMembersList() {
-        this.restHttp.get('/member').subscribe(response => {
+        this.restHttp.get('/member', {size: this.size, page: this.page}).subscribe(response => {
             this.membersList = response.body.data;
-            this.countAll = response.body.count;
         });
+    }
+
+    onChange() {
+        this.getMembersList();
+    }
+
+    setPage(page: number) {
+        this.page = page;
+        this.router.navigate(['/members/page/', page, {size: this.size}]);
+        this.getMembersList();
     }
 
 }

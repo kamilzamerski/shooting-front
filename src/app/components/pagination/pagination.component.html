@@ -1,19 +1,20 @@
 <div class="col-sm-5">
-    <div class="dataTables_info" id="example1_info" role="status" aria-live="polite" *ngIf="list">Widoczne
-        1 - {{list.length}}
-        z {{count}} wpisów
+    <div class="dataTables_info" id="example1_info" role="status" aria-live="polite" *ngIf="data">Widoczne
+        {{data.from}} - {{data.to}}
+        z {{data.total}} wpisów
     </div>
 </div>
 <div class="col-sm-7">
-    <div class="dataTables_paginate paging_simple_numbers">
+    <div class="dataTables_paginate paging_simple_numbers" *ngIf="data">
         <ul class="pagination">
-            <li class="paginate_button previous disabled">
-                <a href="#" data-dt-idx="0" tabindex="0">Poprzedni</a>
+            <li class="paginate_button previous" [ngClass]="{'disabled': !data.prev_page_url}">
+                <a [routerLink]="[route, page-1]" data-dt-idx="0" tabindex="0">Poprzedni</a>
             </li>
-            <li class="paginate_button active">
-                <a href="#" data-dt-idx="1" tabindex="0">1</a></li>
-            <li class="paginate_button next">
-                <a href="#" data-dt-idx="7" tabindex="0">Następny</a>
+            <li class="paginate_button" [ngClass]="{'active': page==data.current_page}" *ngFor="let page of elements">
+                <a [routerLink]="[route, page]" data-dt-idx="page" tabindex="0" (click)="setPage(page)">{{page}}</a>
+            </li>
+            <li class="paginate_button next" [ngClass]="{'disabled': !data.next_page_url}">
+                <a [routerLink]="[route, page+1]" tabindex="0">Następny</a>
             </li>
         </ul>
     </div>

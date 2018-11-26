@@ -12,8 +12,8 @@ export class RestService {
         this.apiUrl = 'http://api.shoot';
     }
 
-    public get(url: string) {
-        return this.http.get(this.apiUrl + url, {observe: 'response'}).pipe(
+    public get(url: string, params: any = {}) {
+        return this.http.get(this.apiUrl + url, {observe: 'response', params: params}).pipe(
             catchError(this.handleError)
         );
     }

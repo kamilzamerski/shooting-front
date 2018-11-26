@@ -9,6 +9,7 @@ const routes: Routes = [
     {path: '', redirectTo: '/dashboard', 'pathMatch': 'full'},
     {path: 'dashboard', component: DashboardComponent},
     {path: 'members', component: MemberListComponent},
+    {path: 'members/page/:page', component: MemberListComponent},
     {path: 'members/new', component: MemberFormComponent},
     {path: 'members/edit/:id', component: MemberFormComponent}
 ];
