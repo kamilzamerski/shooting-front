@@ -4,17 +4,17 @@ import {RestService} from '../../rest.service';
 import {BaseFormComponent} from '../base-form.component';
 import {NgForm} from '@angular/forms';
 import {FlashMessagesService} from 'angular2-flash-messages';
-import {Member} from '../../models/member';
+import {Shooter} from '../../models/shooter';
 
 @Component({
-    selector: 'app-member-form',
-    templateUrl: './member-form.component.html',
-    styleUrls: ['./member-form.component.scss']
+    selector: 'app-shooter-form',
+    templateUrl: './shooter-form.component.html',
+    styleUrls: ['./shooter-form.component.scss']
 })
-export class MemberFormComponent extends BaseFormComponent implements OnInit {
+export class ShooterFormComponent extends BaseFormComponent implements OnInit {
     @ViewChild('f') form: NgForm;
     editForm = false;
-    member = new Member();
+    shooter = new Shooter();
 
     constructor(protected router: Router,
                 protected restHttp: RestService,
@@ -27,24 +27,24 @@ export class MemberFormComponent extends BaseFormComponent implements OnInit {
         super.onSubmit();
         if (this.form.valid) {
             if (this.editForm) {
-                this.restHttp.put('/member/' + this.member.id, this.member).subscribe(
+                this.restHttp.put('/shooter/' + this.shooter.id, this.shooter).subscribe(
                     data => {
-                        this._flashMessagesService.show('Dane klubowicza zostały zapisane pomyślnie!', {
+                        this._flashMessagesService.show('Dane zawodnika zostały zapisane pomyślnie!', {
                             cssClass: 'alert-success',
                             timeout: 5000
                         });
-                        this.router.navigate(['/members']);
+                        this.router.navigate(['/shooters']);
                     },
                     error => this.handleSubmitError(error)
                 );
             } else {
-                this.restHttp.post('/member', this.member).subscribe(
+                this.restHttp.post('/shooter', this.shooter).subscribe(
                     data => {
-                        this._flashMessagesService.show('Dane klubowicza zostały zapisane pomyślnie!', {
+                        this._flashMessagesService.show('Dane zawodnika zostały zapisane pomyślnie!', {
                             cssClass: 'alert-success',
                             timeout: 5000
                         });
-                        this.router.navigate(['/members']);
+                        this.router.navigate(['/shooters']);
                     },
                     error => this.handleSubmitError(error)
                 );
@@ -54,7 +54,7 @@ export class MemberFormComponent extends BaseFormComponent implements OnInit {
     }
 
     ngOnInit() {
-        let id = this.route.snapshot.paramMap.get('id');
+        const id = this.route.snapshot.paramMap.get('id');
         if (id !== null) {
             this.editForm = true;
             this.loadModel(id);
@@ -62,8 +62,8 @@ export class MemberFormComponent extends BaseFormComponent implements OnInit {
     }
 
     loadModel(id: string | number) {
-        this.restHttp.get('/member/' + id).subscribe((response: any) => {
-            this.member = response.body.data;
+        this.restHttp.get('/shooter/' + id).subscribe((response: any) => {
+            this.shooter = response.body.data;
         });
     }
 

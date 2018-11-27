@@ -17,6 +17,10 @@ import {FormsModule} from '@angular/forms';
 import {InputComponent} from './components/form-element/input/input.component';
 import {InputGroupComponent} from './components/form-element/input-group/input-group.component';
 import {FlashMessagesModule} from 'angular2-flash-messages';
+import {ClubListComponent} from './components/club-list/club-list.component';
+import {ShooterListComponent} from './components/shooter-list/shooter-list.component';
+import {ClubFormComponent} from './forms/club-form/club-form.component';
+import {ShooterFormComponent} from './forms/shooter-form/shooter-form.component';
 
 @NgModule({
     declarations: [
@@ -30,7 +34,11 @@ import {FlashMessagesModule} from 'angular2-flash-messages';
         PaginationComponent,
         MemberFormComponent,
         InputComponent,
-        InputGroupComponent
+        InputGroupComponent,
+        ClubListComponent,
+        ShooterListComponent,
+        ClubFormComponent,
+        ShooterFormComponent
     ],
     imports: [
         BrowserModule,

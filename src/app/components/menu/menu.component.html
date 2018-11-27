@@ -4,7 +4,7 @@
             <li class="header">MENU</li>
             <li routerLinkActive="active">
                 <a routerLink="/dashboard">
-                    <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                    <i class="fa fa-tachometer-alt"></i> <span>Dashboard</span>
                 </a>
             </li>
             <li routerLinkActive="active">
@@ -12,19 +12,29 @@
                     <i class="fa fa-users"></i> <span>Klubowicze</span>
                 </a>
             </li>
-            <li class="treeview">
+            <li routerLinkActive="active">
+                <a routerLink="/members">
+                    <i class="fa fa-warehouse"></i> <span>Magazyn broni</span>
+                </a>
+            </li>
+            <li class="treeview menu-open">
                 <a href="#">
-                    <i class="fa fa-calendar"></i>
+                    <i class="far fa-calendar-alt"></i>
                     <span>Zawody</span>
                     <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-          </span>
+                      <i class="fa fa-angle-down pull-right"></i>
+                    </span>
                 </a>
-                <ul class="treeview-menu">
-                    <li><a href=""><i class="fa fa-circle-o"></i> Zawody</a></li>
-                    <li><a href=""><i class="fa fa-circle-o"></i> Rodzaje</a></li>
-                    <li><a href=""><i class="fa fa-circle-o"></i> Konkurencje</a></li>
-                    <li><a href=""><i class="fa fa-circle-o"></i> Zawodnicy</a></li>
+                <ul class="treeview-menu" style="display:block">
+                    <li><a href=""><i class="fa fa-caret-right"></i> Wyniki</a></li>
+                    <!--<li><a href=""><i class="fa fa-caret-right"></i> Rodzaje</a></li>-->
+                    <!--<li><a href=""><i class="fa fa-caret-right"></i> Konkurencje</a></li>-->
+                    <li>
+                        <a routerLink="/shooters"><i class="fa fa-caret-right"></i> Zawodnicy</a>
+                    </li>
+                    <li>
+                        <a routerLink="/clubs"><i class="fa fa-caret-right"></i> Kluby</a>
+                    </li>
                 </ul>
             </li>
         </ul>

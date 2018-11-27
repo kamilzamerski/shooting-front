@@ -1,1 +1,10 @@
-/* You can add global styles to this file, and also import other style files */
+.sidebar-menu>li>a>.fa, .sidebar-menu>li>a>.far, .sidebar-menu>li>a>.glyphicon, .sidebar-menu>li>a>.ion {
+    width: 25px;
+}
+.sidebar-toggle {
+    font-family: "Font Awesome 5 Free"!important;
+    font-weight:900;
+}
+.sidebar-toggle:before {
+    content:"\f0c9"
+}

@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {catchError} from 'rxjs/operators';
-import {ErrorObservable} from 'rxjs/observable/ErrorObservable';
+import {throwError} from 'rxjs/internal/observable/throwError';
 
 @Injectable()
 export class RestService {
@@ -49,9 +49,10 @@ export class RestService {
             // The response body may contain clues as to what went wrong,
             console.error(
                 `Backend returned code ${error.status}, ` +
-                `body was: ` + JSON.stringify(error.error));
+                `body was: ${error.error}`);
         }
-        // return an ErrorObservable with a user-facing error message
-        return new ErrorObservable(error);
+        // return an observable with a user-facing error message
+        return throwError(
+            'Something bad happened; please try again later.');
     };
 }

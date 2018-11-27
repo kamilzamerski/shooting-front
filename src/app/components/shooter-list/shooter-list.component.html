@@ -3,7 +3,7 @@
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title">Ewidencja klubowiczów</h3>
+                    <h3 class="box-title">Zawodnicy</h3>
                 </div>
                 <div class="box-body">
                     <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
@@ -32,31 +32,30 @@
                                     <thead>
                                         <tr role="row">
                                             <th>ID</th>
-                                            <th>Data przyjęcia</th>
+                                            <th>Data dodania</th>
                                             <th>Imię</th>
                                             <th>Nazwisko</th>
-                                            <th>Miejscowość</th>
-                                            <th>Patent</th>
-                                            <th>Licencje</th>
+                                            <th>Klub</th>
+                                            <th>Aktualna licencja</th>
+                                            <th>Historia licencji</th>
                                             <th class="text-center">
                                                 <i class="fa fa-cog"></i>
                                             </th>
                                         </tr>
                                     </thead>
-                                    <tbody *ngIf="membersList">
-                                        <tr role="row" ngClass="{odd: odd, even: even}" *ngFor="let member of membersList.data">
-                                            <td>{{member.id}}</td>
-                                            <td>{{member.date_of_join}}</td>
-                                            <td>{{member.name}}</td>
-                                            <td>{{member.surname}}</td>
-                                            <td>{{member.city}}</td>
-                                            <td>{{member.shooting_license}}</td>
+                                    <tbody *ngIf="shooterList">
+                                        <tr role="row" ngClass="{odd: odd, even: even}" *ngFor="let shooter of shooterList.data">
+                                            <td>{{shooter.id}}</td>
+                                            <td>{{shooter.created_at}}</td>
+                                            <td>{{shooter.name}}</td>
+                                            <td>{{shooter.surname}}</td>
+                                            <td>{{shooter.club.name}}</td>
+                                            <td>{{shooter.license}}</td>
                                             <td class="text-center">
-                                                <a routerLink="/shooter/licenses/{{member.shooter_id}}" tooltip="Licencje zawodnicze"><i class="fa fa-history"></i></a>
+                                                <a routerLink="/shooters/licenses/{{shooter.id}}" tooltip="Licencje zawodnicze"><i class="fa fa-history"></i></a>
                                             </td>
-                                            <td class="text-center" style="letter-spacing: 10px">
-                                                <a routerLink="/members/edit/{{member.id}}" tooltip="Edytuj"><i class="far fa-edit"></i></a>
-                                                <a routerLink="/members/accounting/{{member.id}}" tooltip="Rozliczenia"><i class="far fa-money-bill-alt"></i></a>
+                                            <td class="text-center">
+                                                <a routerLink="/shooters/edit/{{shooter.id}}" tooltip="Edytuj"><i class="far fa-edit"></i></a>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -64,12 +63,12 @@
                             </div>
                         </div>
                         <div class="row">
-                                <app-pagination [data]="membersList" route="/members/page" (goToPage)="setPage($event)" *ngIf="membersList"></app-pagination>
+                                <app-pagination [data]="shooterList" route="/shooters/page" (goToPage)="setPage($event)" *ngIf="shooterList"></app-pagination>
                         </div>
                     </div>
                 </div>
                 <div class="box-footer">
-                    <a routerLink="/members/new" class="btn btn-primary"><i class="fa fa-plus"></i> Dodaj nowego</a>
+                    <a routerLink="/shooters/new" class="btn btn-primary"><i class="fa fa-plus"></i> Dodaj nowego</a>
                 </div>
             </div>
         </div>

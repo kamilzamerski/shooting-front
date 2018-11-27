@@ -1,0 +1,36 @@
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Zgłoszenie zawodnika</h3>
+                </div>
+                <form #shooterForm="ngForm" (ngSubmit)="onSubmit()" #f="ngForm">
+                    <div class="box-body">
+                        <div class="col-xs-12">
+                            <h4>Dane osobowe</h4>
+                            <hr/>
+                            <div class="row">
+                                <div class="col-md-6 col-lg-3">
+                                    <app-form-input [name]="'name'" [id]="'name'" [label]="'Imię'" [required]="true" [form]="f" [errors]="errors" [(ngModel)]="shooter.name"></app-form-input>
+                                </div>
+                                <div class="col-md-6 col-lg-3">
+                                    <app-form-input [name]="'surname'" [id]="'surname'" [label]="'Nazwisko'" [required]="true" [form]="f" [errors]="errors" [(ngModel)]="shooter.surname"></app-form-input>
+                                </div>
+                                <div class="col-md-6 col-lg-3">
+                                    <app-form-input [name]="'club_id'" [id]="'club_id'" [label]="'Klub'" [required]="true" [form]="f" [errors]="errors" [(ngModel)]="shooter.club_id"></app-form-input>
+                                </div>
+                                <div class="col-md-6 col-lg-3">
+                                    <app-form-input [name]="'license'" [id]="'license'" [label]="'Numer aktualnej licencji'" [form]="f" [errors]="errors" [(ngModel)]="shooter.license"></app-form-input>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary"><i class="far fa-save"></i> Zapisz</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

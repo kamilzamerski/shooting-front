@@ -3,14 +3,14 @@ import {RestService} from '../../rest.service';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
-    selector: 'app-member-list',
-    templateUrl: './member-list.component.html',
-    styleUrls: ['./member-list.component.scss']
+    selector: 'app-shooter-list',
+    templateUrl: './shooter-list.component.html',
+    styleUrls: ['./shooter-list.component.scss']
 })
-export class MemberListComponent implements OnInit {
+export class ShooterListComponent implements OnInit {
     size: number;
     page: number;
-    membersList: any;
+    shooterList: any;
 
     constructor(protected router: Router, private route: ActivatedRoute, private restHttp: RestService) {
         this.size = 10;
@@ -22,23 +22,23 @@ export class MemberListComponent implements OnInit {
         if (page) {
             this.page = parseInt(page);
         }
-        this.getMembersList();
+        this.getShooterList();
     }
 
-    getMembersList() {
-        this.restHttp.get('/member', {size: this.size, page: this.page}).subscribe((response: any) => {
-            this.membersList = response.body.data;
+    getShooterList() {
+        this.restHttp.get('/shooter', {size: this.size, page: this.page}).subscribe((response: any) => {
+            this.shooterList = response.body.data;
         });
     }
 
     onChange() {
-        this.getMembersList();
+        this.getShooterList();
     }
 
     setPage(page: number) {
         this.page = page;
-        this.router.navigate(['/members/page/', page, {size: this.size}]);
-        this.getMembersList();
+        this.router.navigate(['/shooter/page/', page, {size: this.size}]);
+        this.getShooterList();
     }
 
 }
