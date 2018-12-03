@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ClubFormComponent } from './club-form.component';
 
-describe('ClubFormComponent', () => {
+describe('LicenseFormComponent', () => {
   let component: ClubFormComponent;
   let fixture: ComponentFixture<ClubFormComponent>;
 

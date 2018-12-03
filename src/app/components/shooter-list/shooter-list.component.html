@@ -50,7 +50,7 @@
                                             <td>{{shooter.name}}</td>
                                             <td>{{shooter.surname}}</td>
                                             <td>{{shooter.club.name}}</td>
-                                            <td>{{shooter.license}}</td>
+                                            <td>{{shooter.licenses[0].number}} ({{shooter.licenses[0].year}}r.)</td>
                                             <td class="text-center">
                                                 <a routerLink="/shooters/licenses/{{shooter.id}}" tooltip="Licencje zawodnicze"><i class="fa fa-history"></i></a>
                                             </td>

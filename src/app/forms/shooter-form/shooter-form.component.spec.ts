@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ShooterFormComponent } from './shooter-form.component';
 
-describe('ClubFormComponent', () => {
+describe('LicenseFormComponent', () => {
   let component: ShooterFormComponent;
   let fixture: ComponentFixture<ShooterFormComponent>;
 

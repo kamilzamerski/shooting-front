@@ -1,0 +1,52 @@
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Rozliczenia klubowicza</h3>
+                </div>
+                <div class="box-body">
+                    <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <table class="table table-bordered table-striped dataTable" role="grid">
+                                    <thead>
+                                        <tr role="row">
+                                            <th>ID</th>
+                                            <th>Data wprowadzenia</th>
+                                            <th>Opis</th>
+                                            <th>Rok rozliczeniowy</th>
+                                            <th>Kwota</th>
+                                            <th class="text-center">
+                                                <i class="fa fa-cog"></i>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody *ngIf="settlementsList">
+                                        <tr role="row" ngClass="{odd: odd, even: even}" *ngFor="let settlement of settlementsList.data">
+                                            <td>{{settlement.id}}</td>
+                                            <td>{{settlement.created_at}}</td>
+                                            <td>{{settlement.description}}</td>
+                                            <td>{{settlement.year}}</td>
+                                            <td>{{settlement.amount}}</td>
+                                            <td class="text-center" style="letter-spacing: 10px">
+                                                <a routerLink="/members/settlements/edit/{{memberId}}/{{settlement.id}}" tooltip="Edytuj"><i class="far fa-edit"></i></a>
+                                                <a routerLink="/members/settlements/{{memberId}}/{{settlement.id}}" tooltip="Usuń"><i class="far fa-trash"></i></a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="row">
+                                <app-pagination [data]="settlementsList" route="/members/settlements/{{memberId}}page" (goToPage)="setPage($event)" *ngIf="settlementsList"></app-pagination>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-footer">
+                    <a routerLink="/members/settlements/new/{{memberId}}" class="btn btn-primary"><i class="fa fa-plus"></i> Dodaj nowe</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

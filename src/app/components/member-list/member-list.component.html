@@ -52,11 +52,11 @@
                                             <td>{{member.city}}</td>
                                             <td>{{member.shooting_license}}</td>
                                             <td class="text-center">
-                                                <a routerLink="/shooter/licenses/{{member.shooter_id}}" tooltip="Licencje zawodnicze"><i class="fa fa-history"></i></a>
+                                                <a routerLink="/shooters/licenses/{{member.shooter_id}}" tooltip="Licencje zawodnicze"><i class="fa fa-history"></i></a>
                                             </td>
                                             <td class="text-center" style="letter-spacing: 10px">
                                                 <a routerLink="/members/edit/{{member.id}}" tooltip="Edytuj"><i class="far fa-edit"></i></a>
-                                                <a routerLink="/members/accounting/{{member.id}}" tooltip="Rozliczenia"><i class="far fa-money-bill-alt"></i></a>
+                                                <a routerLink="/members/settlements/{{member.id}}" tooltip="Rozliczenia"><i class="far fa-money-bill-alt"></i></a>
                                             </td>
                                         </tr>
                                     </tbody>

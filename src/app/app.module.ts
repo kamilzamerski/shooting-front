@@ -21,6 +21,9 @@ import {ClubListComponent} from './components/club-list/club-list.component';
 import {ShooterListComponent} from './components/shooter-list/shooter-list.component';
 import {ClubFormComponent} from './forms/club-form/club-form.component';
 import {ShooterFormComponent} from './forms/shooter-form/shooter-form.component';
+import {LicenseListComponent} from './components/license-list/license-list.component';
+import {LicenseFormComponent} from './forms/license-form/license-form.component';
+import {SettlementsComponent} from './components/settlements/settlements.component';
 
 @NgModule({
     declarations: [
@@ -38,7 +41,10 @@ import {ShooterFormComponent} from './forms/shooter-form/shooter-form.component'
         ClubListComponent,
         ShooterListComponent,
         ClubFormComponent,
-        ShooterFormComponent
+        ShooterFormComponent,
+        LicenseListComponent,
+        LicenseFormComponent,
+        SettlementsComponent
     ],
     imports: [
         BrowserModule,

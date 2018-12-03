@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MemberFormComponent } from './member-form.component';
+import { LicenseFormComponent } from './license-form.component';
 
 describe('LicenseFormComponent', () => {
-  let component: MemberFormComponent;
-  let fixture: ComponentFixture<MemberFormComponent>;
+  let component: LicenseFormComponent;
+  let fixture: ComponentFixture<LicenseFormComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MemberFormComponent ]
+      declarations: [ LicenseFormComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MemberFormComponent);
+    fixture = TestBed.createComponent(LicenseFormComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
