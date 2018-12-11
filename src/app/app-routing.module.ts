@@ -10,6 +10,7 @@ import {ShooterFormComponent} from './forms/shooter-form/shooter-form.component'
 import {LicenseListComponent} from './components/license-list/license-list.component';
 import {LicenseFormComponent} from './forms/license-form/license-form.component';
 import {SettlementsComponent} from './components/settlements/settlements.component';
+import {SettlementFormComponent} from './forms/settlement-form/settlement-form.component';
 
 
 const routes: Routes = [
@@ -20,6 +21,8 @@ const routes: Routes = [
     {path: 'members/new', component: MemberFormComponent},
     {path: 'members/edit/:id', component: MemberFormComponent},
     {path: 'members/settlements/:memberId', component: SettlementsComponent},
+    {path: 'members/settlements/new/:memberId', component: SettlementFormComponent},
+    {path: 'members/settlements/edit/:memberId/:settlementId', component: SettlementFormComponent},
     {path: 'clubs', component: ClubListComponent},
     {path: 'clubs/page/:page', component: ClubListComponent},
     {path: 'clubs/new', component: ClubFormComponent},

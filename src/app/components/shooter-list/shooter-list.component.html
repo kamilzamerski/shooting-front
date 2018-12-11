@@ -58,6 +58,9 @@
                                                 <a routerLink="/shooters/edit/{{shooter.id}}" tooltip="Edytuj"><i class="far fa-edit"></i></a>
                                             </td>
                                         </tr>
+                                        <tr *ngIf="shooterList.data.length == 0">
+                                            <td colspan="8">Brak wyników</td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>

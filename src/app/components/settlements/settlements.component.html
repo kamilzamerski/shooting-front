@@ -3,7 +3,7 @@
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title">Rozliczenia klubowicza</h3>
+                    <h3 class="box-title">Rozliczenia klubowicza "{{member.name}} {{member.surname}}"</h3>
                 </div>
                 <div class="box-body">
                     <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
@@ -31,8 +31,11 @@
                                             <td>{{settlement.amount}}</td>
                                             <td class="text-center" style="letter-spacing: 10px">
                                                 <a routerLink="/members/settlements/edit/{{memberId}}/{{settlement.id}}" tooltip="Edytuj"><i class="far fa-edit"></i></a>
-                                                <a routerLink="/members/settlements/{{memberId}}/{{settlement.id}}" tooltip="Usuń"><i class="far fa-trash"></i></a>
+                                                <app-confirmation-delete [url]="'/settlement/'+memberId+'/'+settlement.id" [deleteFunction]="confirmDelete"></app-confirmation-delete>
                                             </td>
+                                        </tr>
+                                        <tr *ngIf="settlementsList.data.length == 0">
+                                            <td colspan="6">Brak wyników</td>
                                         </tr>
                                     </tbody>
                                 </table>

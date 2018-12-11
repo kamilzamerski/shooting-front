@@ -18,6 +18,12 @@ export class RestService {
         );
     }
 
+    public delete(url: string, params: any = {}) {
+        return this.http.delete(this.apiUrl + url, {observe: 'response', params: params}).pipe(
+            catchError(this.handleError)
+        );
+    }
+
     public post(url: string, params: any) {
         return this.http.post(this.apiUrl + url, params, {
             headers: {

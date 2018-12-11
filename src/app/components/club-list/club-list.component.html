@@ -46,6 +46,9 @@
                                                 <a routerLink="/clubs/edit/{{club.id}}" tooltip="Edytuj"><i class="far fa-edit"></i></a>
                                             </td>
                                         </tr>
+                                        <tr *ngIf="clubList.data.length == 0">
+                                            <td colspan="3">Brak wyników</td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>

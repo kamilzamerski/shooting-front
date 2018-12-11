@@ -24,6 +24,9 @@ import {ShooterFormComponent} from './forms/shooter-form/shooter-form.component'
 import {LicenseListComponent} from './components/license-list/license-list.component';
 import {LicenseFormComponent} from './forms/license-form/license-form.component';
 import {SettlementsComponent} from './components/settlements/settlements.component';
+import {SettlementFormComponent} from './forms/settlement-form/settlement-form.component';
+import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
+import { ConfirmationDeleteComponent } from './components/confirmation-delete/confirmation-delete.component';
 
 @NgModule({
     declarations: [
@@ -44,14 +47,19 @@ import {SettlementsComponent} from './components/settlements/settlements.compone
         ShooterFormComponent,
         LicenseListComponent,
         LicenseFormComponent,
-        SettlementsComponent
+        SettlementsComponent,
+        SettlementFormComponent,
+        ConfirmationDeleteComponent
     ],
     imports: [
         BrowserModule,
         AppRoutingModule,
         HttpClientModule,
         FormsModule,
-        FlashMessagesModule.forRoot()
+        FlashMessagesModule.forRoot(),
+        ConfirmationPopoverModule.forRoot({
+            confirmButtonType: 'danger' // set defaults here
+        })
     ],
     providers: [
         RestService

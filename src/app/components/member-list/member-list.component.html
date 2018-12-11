@@ -59,6 +59,9 @@
                                                 <a routerLink="/members/settlements/{{member.id}}" tooltip="Rozliczenia"><i class="far fa-money-bill-alt"></i></a>
                                             </td>
                                         </tr>
+                                        <tr *ngIf="membersList.data.length == 0">
+                                            <td colspan="8">Brak wyników</td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>

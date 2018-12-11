@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {RestService} from '../../rest.service';
 import {ActivatedRoute, Router} from '@angular/router';
+import {Member} from '../../models/member';
+import {FlashMessagesService} from 'angular2-flash-messages';
 
 @Component({
     selector: 'app-settlements',
@@ -12,15 +14,19 @@ export class SettlementsComponent implements OnInit {
     page: number;
     memberId: number;
     settlementsList: any;
+    member: Member;
 
-    constructor(protected router: Router, private route: ActivatedRoute, private restHttp: RestService) {
+    constructor(protected router: Router,
+                private route: ActivatedRoute,
+                private restHttp: RestService) {
         this.size = 10;
         this.page = 1;
     }
 
     ngOnInit() {
-        let page = this.route.snapshot.paramMap.get('page');
-        let memberId = this.route.snapshot.paramMap.get('memberId');
+        this.member = new Member();
+        const page = this.route.snapshot.paramMap.get('page');
+        const memberId = this.route.snapshot.paramMap.get('memberId');
         if (page) {
             this.page = parseInt(page);
         }
@@ -28,11 +34,18 @@ export class SettlementsComponent implements OnInit {
             this.memberId = parseInt(memberId);
         }
         this.getSettlementsList();
+        this.getMember();
     }
 
     getSettlementsList() {
         this.restHttp.get('/settlement/' + this.memberId, {size: this.size, page: this.page}).subscribe((response: any) => {
             this.settlementsList = response.body.data;
+        });
+    }
+
+    getMember() {
+        this.restHttp.get('/member/' + this.memberId).subscribe((response: any) => {
+            this.member = response.body.data;
         });
     }
 
@@ -42,8 +55,17 @@ export class SettlementsComponent implements OnInit {
 
     setPage(page: number) {
         this.page = page;
-        this.router.navigate(['/settlements/' + this.memberId + '/page/', page, {size: this.size}]);
+        this.router.navigate(['/settlement/' + this.memberId + '/page/', page, {size: this.size}]);
         this.getSettlementsList();
+    }
+
+    confirmDelete(url: string, restHttp: RestService, flashMessagesService: FlashMessagesService) {
+        restHttp.delete(url).subscribe((response: any) => {
+            flashMessagesService.show('Rozliczenie zostało usunięte!', {
+                cssClass: 'alert-success',
+                timeout: 5000
+            });
+        });
     }
 
 }

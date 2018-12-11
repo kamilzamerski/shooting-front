@@ -29,6 +29,9 @@
                                                 <a routerLink="/shooters/licenses/edit/{{shooter}}/{{license.id}}" tooltip="Edytuj"><i class="far fa-edit"></i></a>
                                             </td>
                                         </tr>
+                                        <tr *ngIf="licenseList.data.length == 0">
+                                            <td colspan="4">Brak wyników</td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>

@@ -1,0 +1,12 @@
+<a
+        mwlConfirmationPopover
+        [popoverTitle]="popoverTitle"
+        [popoverMessage]="popoverMessage"
+        [cancelText]="'Anuluj'"
+        [confirmText]="'Tak'"
+        placement="left"
+        (confirm)="confirmDelete()"
+        tooltip="Usuń"
+        style="cursor:pointer;outline:none">
+  <i class="far fa-trash-alt"></i>
+</a>
