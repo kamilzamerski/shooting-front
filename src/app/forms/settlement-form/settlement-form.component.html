@@ -1,0 +1,33 @@
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Rozliczenie</h3>
+                </div>
+                <form #settlementForm="ngForm" (ngSubmit)="onSubmit()" #f="ngForm">
+                    <div class="box-body">
+                        <div class="col-xs-12">
+                            <h4>Dane osobowe</h4>
+                            <hr/>
+                            <div class="row">
+                                <div class="col-md-6 col-lg-3">
+                                    <app-form-input [name]="'description'" [id]="'description'" [label]="'Opis'" [required]="true" [form]="f" [errors]="errors" [(ngModel)]="settlement.description"></app-form-input>
+                                </div>
+                                <div class="col-md-6 col-lg-3">
+                                    <app-form-input [name]="'amount'" [id]="'amount'" [label]="'Kwota'" [required]="true" [form]="f" [errors]="errors" [(ngModel)]="settlement.amount"></app-form-input>
+                                </div>
+                                <div class="col-md-6 col-lg-3">
+                                    <app-form-input [name]="'year'" [id]="'year'" [label]="'Rok rozliczeniowy'" [required]="true" [form]="f" [errors]="errors" [(ngModel)]="settlement.year"></app-form-input>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-footer">
+                        <button type="submit" class="btn btn-primary"><i class="far fa-save"></i> Zapisz</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
