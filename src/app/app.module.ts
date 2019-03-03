@@ -27,6 +27,7 @@ import {SettlementsComponent} from './components/settlements/settlements.compone
 import {SettlementFormComponent} from './forms/settlement-form/settlement-form.component';
 import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 import { ConfirmationDeleteComponent } from './components/confirmation-delete/confirmation-delete.component';
+import { LoginComponent } from './auth/login/login.component';
 
 @NgModule({
     declarations: [
@@ -49,7 +50,8 @@ import { ConfirmationDeleteComponent } from './components/confirmation-delete/co
         LicenseFormComponent,
         SettlementsComponent,
         SettlementFormComponent,
-        ConfirmationDeleteComponent
+        ConfirmationDeleteComponent,
+        LoginComponent
     ],
     imports: [
         BrowserModule,

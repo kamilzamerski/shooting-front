@@ -8,7 +8,7 @@ export abstract class BaseFormComponent {
     submitted = false;
     public errors = [];
 
-    constructor(protected router: Router,
+    protected constructor(protected router: Router,
                 protected restHttp: RestService) {
     }
 

@@ -11,18 +11,21 @@ import {LicenseListComponent} from './components/license-list/license-list.compo
 import {LicenseFormComponent} from './forms/license-form/license-form.component';
 import {SettlementsComponent} from './components/settlements/settlements.component';
 import {SettlementFormComponent} from './forms/settlement-form/settlement-form.component';
+import {AuthGuard} from './auth/auth.guard';
+import {LoginComponent} from './auth/login/login.component';
 
 
 const routes: Routes = [
     {path: '', redirectTo: '/dashboard', 'pathMatch': 'full'},
-    {path: 'dashboard', component: DashboardComponent},
-    {path: 'members', component: MemberListComponent},
-    {path: 'members/page/:page', component: MemberListComponent},
-    {path: 'members/new', component: MemberFormComponent},
-    {path: 'members/edit/:id', component: MemberFormComponent},
-    {path: 'members/settlements/:memberId', component: SettlementsComponent},
-    {path: 'members/settlements/new/:memberId', component: SettlementFormComponent},
-    {path: 'members/settlements/edit/:memberId/:settlementId', component: SettlementFormComponent},
+    {path: 'login', component: LoginComponent},
+    {path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
+    {path: 'members', component: MemberListComponent, canActivate: [AuthGuard]},
+    {path: 'members/page/:page', component: MemberListComponent, canActivate: [AuthGuard]},
+    {path: 'members/new', component: MemberFormComponent, canActivate: [AuthGuard]},
+    {path: 'members/edit/:id', component: MemberFormComponent, canActivate: [AuthGuard]},
+    {path: 'members/settlements/:memberId', component: SettlementsComponent, canActivate: [AuthGuard]},
+    {path: 'members/settlements/new/:memberId', component: SettlementFormComponent, canActivate: [AuthGuard]},
+    {path: 'members/settlements/edit/:memberId/:settlementId', component: SettlementFormComponent, canActivate: [AuthGuard]},
     {path: 'clubs', component: ClubListComponent},
     {path: 'clubs/page/:page', component: ClubListComponent},
     {path: 'clubs/new', component: ClubFormComponent},
